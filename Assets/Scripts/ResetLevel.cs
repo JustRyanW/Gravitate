@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public static class ResetLevel : MonoBehaviour {
+public static class ResetLevel {
 	
 
 	static void RestartLevel(){
