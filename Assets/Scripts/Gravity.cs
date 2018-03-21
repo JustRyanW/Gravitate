@@ -2,19 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Gravity : MonoBehaviour {
 
 	public float attractionForce = 10f;
 
-	Rigidbody rb;
+	Rigidbody2D rb;
 
 	public static List<Gravity> Attractors;
 
 	void Start () 
 	{
-		rb = GetComponent<Rigidbody> ();
+		rb = GetComponent<Rigidbody2D> ();
 	}
 
 	void FixedUpdate () 
@@ -41,7 +40,7 @@ public class Gravity : MonoBehaviour {
 
 	void Attract (Gravity objToAttract)
 	{
-		Rigidbody rbToAttract = objToAttract.rb;
+		Rigidbody2D rbToAttract = objToAttract.rb;
 
 		Vector3 direction = rb.position - rbToAttract.position;
 		float distance = direction.magnitude;
