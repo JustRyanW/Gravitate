@@ -45,8 +45,9 @@ public class Gravity : MonoBehaviour {
 		Vector3 direction = rb.position - rbToAttract.position;
 		float distance = direction.magnitude;
 
-		float forceMagnitude = attractionForce * (rb.mass * rbToAttract.mass) / Mathf.Pow (distance, 2);
-		Vector3 force = direction.normalized * forceMagnitude;
+        //float forceMagnitude = attractionForce * (rb.mass * rbToAttract.mass) / Mathf.Pow (distance, 2);     <- Square
+        float forceMagnitude = attractionForce * (rb.mass * rbToAttract.mass) / distance/2;                   // <- Linear
+        Vector3 force = direction.normalized * forceMagnitude;
 
 		rbToAttract.AddForce (force);
 	}
