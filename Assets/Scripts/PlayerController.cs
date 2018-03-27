@@ -46,7 +46,8 @@ public class PlayerController : MonoBehaviour {
         lr.enabled = false;
 		rb.isKinematic = false;
 		Vector2 dir = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
-		rb.AddForce (dir.normalized * launchSpeedMinMax.y * forcePercent);
+        rb.AddForce (dir.normalized * launchSpeedMinMax.y * forcePercent);
+        //GetComponent<GravityController>().NextPos(transform.position, dir.normalized * launchSpeedMinMax.y * forcePercent);
 		Invoke ("LeftPlanet", 0.1f);
 	}
 

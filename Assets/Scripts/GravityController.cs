@@ -1,19 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class GravityController : MonoBehaviour {
-
-    public bool drawForce = false;
-    public bool isLinear = true;
-    public float globalGravityScale = 10f;
+public class GravityController : MonoBehaviour
+{
+    /*public float globalGravityScale = 10f;
     public List<GameObject> Attractors;
-    Rigidbody2D rb;
+    public Vector2 currentVelocity;
 
-	void Start () {
-        rb = GetComponent<Rigidbody2D>();
-	}
-	
-	void OnEnable () {
+    void OnEnable()
+    {
         if (Attractors == null)
             Attractors = new List<GameObject>();
         foreach (GameObject attractor in GameObject.FindGameObjectsWithTag("Attractor"))
@@ -24,51 +19,75 @@ public class GravityController : MonoBehaviour {
 
     void FixedUpdate()
     {
+        //Attract();
+        if (!GetComponent<Rigidbody2D>().isKinematic)
+        transform.position = NextPos(transform.position, currentVelocity);
+    }
+
+    public Vector2 NextPos(Vector2 currentPos, Vector2 currentVelocity)
+    {
+        Vector2 nextPos = (Vector2)transform.position + currentVelocity;
         foreach (GameObject attractor in Attractors)
         {
-            Attract(attractor);
+            Vector2 dir = attractor.transform.position - transform.position;
+            float distance = dir.magnitude;
+
+            float forceMagnitude = globalGravityScale * (attractor.GetComponent<Rigidbody2D>().mass) / distance / 2;
+            Vector2 moveToAttractor = dir.normalized * forceMagnitude;
+            Debug.DrawRay(Vector2.zero, nextPos);
+            nextPos += moveToAttractor;
+        }
+        currentVelocity += nextPos;
+        return currentVelocity;
+    }*/
+
+
+
+
+
+    
+    public bool drawForce = false;
+    public bool isLinear = true;
+    public float globalGravityScale = 10f;
+    public List<GameObject> Attractors;
+    Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void OnEnable()
+    {
+        if (Attractors == null)
+            Attractors = new List<GameObject>();
+        foreach (GameObject attractor in GameObject.FindGameObjectsWithTag("Attractor"))
+        {
+            Attractors.Add(attractor);
         }
     }
 
-    void Attract(GameObject planet)
+    void FixedUpdate()
     {
-        Rigidbody2D planetRb = planet.GetComponent<Rigidbody2D>();
-
-        Vector2 direction = planetRb.position - rb.position;
-        float distance = direction.magnitude;
-
-        float forceMagnitude = (isLinear) ? globalGravityScale * (rb.mass * planetRb.mass) / distance / 2 : globalGravityScale * (rb.mass * planetRb.mass) / Mathf.Pow(distance, 2);
-        Vector2 force = direction.normalized * forceMagnitude;
-
-        if (drawForce)
-            Debug.DrawRay(transform.position, direction, Color.Lerp(Color.blue, Color.red, forceMagnitude / (globalGravityScale / 4)));
-
-        rb.AddForce(force);
+        Attract();
     }
 
-    // create own movement handler that uses startpos startvelocity and returns a endpos and endvelocity instead of relying on rigidbody, then use it to calculate trajectory
-
-    /*public Vector2 CalculateForce(Vector2 startPos)
+    void Attract()
     {
         foreach (GameObject attractor in Attractors)
         {
-            Vector2 direction = planetRb.position - rb.position;
+            Rigidbody2D attractorRb = attractor.GetComponent<Rigidbody2D>();
+
+            Vector2 direction = attractorRb.position - rb.position;
             float distance = direction.magnitude;
 
-            float forceMagnitude = (isLinear) ? globalGravityScale * (rb.mass * planetRb.mass) / distance / 2 : globalGravityScale * (rb.mass * planetRb.mass) / Mathf.Pow(distance, 2);
+            float forceMagnitude = (isLinear) ? globalGravityScale * (rb.mass * attractorRb.mass) / distance / 2 : globalGravityScale * (rb.mass * attractorRb.mass) / Mathf.Pow(distance, 2);
             Vector2 force = direction.normalized * forceMagnitude;
 
+            if (drawForce)
+                Debug.DrawRay(transform.position, direction, Color.Lerp(Color.blue, Color.red, forceMagnitude / (globalGravityScale / 4)));
+
+            rb.AddForce(force);
         }
-        return finalForce;
     }
-
-    public Vector2 CalculatePos(Vector2 startPos, Vector2 startVel, float iterations)
-    {
-        for (int i = 0; i < iterations; i++)
-        {
-
-
-        }
-        return finalPos;
-    }*/
 }
