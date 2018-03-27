@@ -2,9 +2,30 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(Rigidbody2D))]
+//[RequireComponent(typeof(Rigidbody2D))]
 public class Gravity : MonoBehaviour {
+   
+    
+    // Script deprecated use GravityController
+    
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
 	public float attractionForce = 10f;
 
 	Rigidbody2D rb;
@@ -51,5 +72,6 @@ public class Gravity : MonoBehaviour {
 
 		rbToAttract.AddForce (force);
 	}
+    */
 
 }
