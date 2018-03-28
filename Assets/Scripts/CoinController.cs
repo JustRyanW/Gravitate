@@ -12,6 +12,6 @@ public static class CoinController {
 
 	public static void CollectCoin(int coinGroup, int coinNumber)
     {
-
+		coins [coinGroup, coinNumber + 1].gameObject.GetComponent<Collider2D> ().enabled = true;
     }
 }

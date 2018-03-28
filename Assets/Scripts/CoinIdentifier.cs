@@ -15,13 +15,19 @@ public class CoinIdentifier : MonoBehaviour {
         coinText = GetComponentInChildren<TextMesh>();
 		coinText.text = (coinNumber + 1).ToString() ;
 		CoinController.SetCoin (coinGroup ,coinNumber , gameObject.GetComponent<CoinIdentifier>());
-		if (coinGroup > maxCoinGroup) {
+		if (coinGroup > maxCoinGroup) 
+		{
 			maxCoinGroup = coinGroup;
+		}
+		if (coinNumber > 0) 
+		{
+			gameObject.GetComponent<Collider2D> ().enabled = false;
 		}
 	}
 
 	void OnTriggerEnter2D(){
 		bool isCollected = true;
-		//CoinController.CollectCoin (coinGroup, coinNumber);
+		CoinController.CollectCoin (coinGroup, coinNumber);
+		Destroy (gameObject);
 	}
 }
