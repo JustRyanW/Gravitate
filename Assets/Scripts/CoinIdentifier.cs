@@ -7,7 +7,6 @@ public class CoinIdentifier : MonoBehaviour {
 
     public int coinGroup;
     public int coinNumber;
-	public bool isCollected;
 
     TextMesh coinText;
 
@@ -26,7 +25,6 @@ public class CoinIdentifier : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(){
-		bool isCollected = true;
 		CoinController.CollectCoin (coinGroup, coinNumber);
 		Destroy (gameObject);
 	}
