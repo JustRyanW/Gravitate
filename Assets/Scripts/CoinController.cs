@@ -3,14 +3,13 @@ using System.Collections;
 
 public static class CoinController {
 
-    public static CoinIdentifier[] coins;
+	public static CoinIdentifier[,] coins = new CoinIdentifier[0, 0];
 
-	static void Start () {
-        CoinIdentifier[] allCoins = Object.FindObjectsOfType<CoinIdentifier>();
-
+	public static void SetCoin(int coinGroup, int coinNumber, CoinIdentifier coin){
+		coins [coinGroup, coinNumber] = coin;
 	}
 
-    static void CollectCoin()
+	public static void CollectCoin(int coinGroup, int coinNumber)
     {
 
     }

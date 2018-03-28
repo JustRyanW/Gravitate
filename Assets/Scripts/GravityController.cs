@@ -2,50 +2,7 @@
 using System.Collections.Generic;
 
 public class GravityController : MonoBehaviour
-{
-    /*public float globalGravityScale = 10f;
-    public List<GameObject> Attractors;
-    public Vector2 currentVelocity;
-
-    void OnEnable()
-    {
-        if (Attractors == null)
-            Attractors = new List<GameObject>();
-        foreach (GameObject attractor in GameObject.FindGameObjectsWithTag("Attractor"))
-        {
-            Attractors.Add(attractor);
-        }
-    }
-
-    void FixedUpdate()
-    {
-        //Attract();
-        if (!GetComponent<Rigidbody2D>().isKinematic)
-        transform.position = NextPos(transform.position, currentVelocity);
-    }
-
-    public Vector2 NextPos(Vector2 currentPos, Vector2 currentVelocity)
-    {
-        Vector2 nextPos = (Vector2)transform.position + currentVelocity;
-        foreach (GameObject attractor in Attractors)
-        {
-            Vector2 dir = attractor.transform.position - transform.position;
-            float distance = dir.magnitude;
-
-            float forceMagnitude = globalGravityScale * (attractor.GetComponent<Rigidbody2D>().mass) / distance / 2;
-            Vector2 moveToAttractor = dir.normalized * forceMagnitude;
-            Debug.DrawRay(Vector2.zero, nextPos);
-            nextPos += moveToAttractor;
-        }
-        currentVelocity += nextPos;
-        return currentVelocity;
-    }*/
-
-
-
-
-
-    
+{    
     public bool drawForce = false;
     public bool isLinear = true;
     public float globalGravityScale = 10f;
@@ -90,4 +47,42 @@ public class GravityController : MonoBehaviour
             rb.AddForce(force);
         }
     }
+
+	/*public float globalGravityScale = 10f;
+    public List<GameObject> Attractors;
+    public Vector2 currentVelocity;
+
+    void OnEnable()
+    {
+        if (Attractors == null)
+            Attractors = new List<GameObject>();
+        foreach (GameObject attractor in GameObject.FindGameObjectsWithTag("Attractor"))
+        {
+            Attractors.Add(attractor);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        //Attract();
+        if (!GetComponent<Rigidbody2D>().isKinematic)
+        transform.position = NextPos(transform.position, currentVelocity);
+    }
+
+    public Vector2 NextPos(Vector2 currentPos, Vector2 currentVelocity)
+    {
+        Vector2 nextPos = (Vector2)transform.position + currentVelocity;
+        foreach (GameObject attractor in Attractors)
+        {
+            Vector2 dir = attractor.transform.position - transform.position;
+            float distance = dir.magnitude;
+
+            float forceMagnitude = globalGravityScale * (attractor.GetComponent<Rigidbody2D>().mass) / distance / 2;
+            Vector2 moveToAttractor = dir.normalized * forceMagnitude;
+            Debug.DrawRay(Vector2.zero, nextPos);
+            nextPos += moveToAttractor;
+        }
+        currentVelocity += nextPos;
+        return currentVelocity;
+    }*/
 }
