@@ -3,10 +3,11 @@ using System.Collections;
 
 public static class CoinController {
 
-    public static GameObject[] coins;
+    public static CoinIdentifier[] coins;
 
 	static void Start () {
-        coins = GameObject.FindGameObjectsWithTag("Coin");
+        CoinIdentifier[] allCoins = Object.FindObjectsOfType<CoinIdentifier>();
+
 	}
 
     static void CollectCoin()
