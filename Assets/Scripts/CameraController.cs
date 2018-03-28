@@ -10,6 +10,12 @@ public class CameraController : MonoBehaviour {
 
     void LateUpdate()
     {
+        float camSize = Vector2.Distance(targets[0].position, targets[1].position) / 1.8f;
+        if (camSize > 5)
+        {
+            Camera.main.orthographicSize = camSize;
+        }
+        
         if (targets.Count == 0)
             return;
 
