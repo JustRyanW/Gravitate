@@ -14,11 +14,10 @@ public class CoinIdentifier : MonoBehaviour {
 	void Start () {
         coinText = GetComponentInChildren<TextMesh>();
 		coinText.text = (coinNumber + 1).ToString() ;
-
+		CoinController.SetCoin (coinGroup ,coinNumber , gameObject.GetComponent<CoinIdentifier>());
 		if (coinGroup > maxCoinGroup) {
 			maxCoinGroup = coinGroup;
 		}
-		CoinController.SetCoin (coinGroup ,coinNumber , gameObject.GetComponent<CoinIdentifier>());
 	}
 
 	void OnTriggerEnter2D(){
